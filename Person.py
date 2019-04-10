@@ -1,6 +1,7 @@
 class Person:
 
-    def __init__(self, health, mana, damage=0):
+    def __init__(self,name, health, mana, damage=0):
+        self.__name=name
         self._health = health
         self._mana = mana
         self._max_health = health
@@ -12,7 +13,7 @@ class Person:
         return self._mana
 
     def is_alive(self):
-        if self._health < 0:
+        if self._health <= 0:
             return False
         else:
             return True
