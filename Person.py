@@ -1,11 +1,11 @@
 class Person:
+    current_weapon=None
+    current_spell=None
 
-    def __init__(self,name, health, mana, damage=0):
-        self.__name=name
+    def __init__(self, health, mana):
         self._health = health
         self._mana = mana
         self._max_health = health
-        self._damage = damage
     def get_health(self):
         return self._health
 
@@ -41,8 +41,17 @@ class Person:
                 self._health = self._health + healing_points
                 return True
 
-    def take_mana(self, mana_points):
-        self._mana += mana_points
+    def equip(Weapon weapon):
+        self.current_weapon=weapon
+
+    def learn(Spell spell):
+        self.current_spell=spell
 
     def attack(self, by=None):
-        pass
+        if self.current_spell==None or self.current_weapon==None:
+            return 0
+        else:
+            if(by=="weapon"):
+                return self.current_weapon.damage
+            if(by=="spell"):
+                return self.current_spell.damage
