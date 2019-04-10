@@ -1,3 +1,5 @@
+from abilities import * 
+ 
 class Person:
     current_weapon=None
     current_spell=None
@@ -41,10 +43,10 @@ class Person:
                 self._health = self._health + healing_points
                 return True
 
-    def equip(Weapon weapon):
+    def equip(self, weapon):
         self.current_weapon=weapon
 
-    def learn(Spell spell):
+    def learn(self, spell):
         self.current_spell=spell
 
     def attack(self, by=None):

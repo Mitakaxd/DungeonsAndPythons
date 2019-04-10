@@ -1,7 +1,7 @@
 class AbilityMixin: 
     def __init__(self, name, damage):
         self._name = name
-        self._damage = dmg
+        self._damage = damage
 
     @property
     def name(self):
@@ -14,6 +14,11 @@ class AbilityMixin:
 class Weapon(AbilityMixin):
     def __init__(self, name, damage):
         super().__init__(name,damage)
+
+    def __str__(self):
+        s=self.name+' '+str(self.damage)
+        return s
+
 
 class Spell(AbilityMixin):
     def __init__(self, name, damage, mana_cost, cast_range):
@@ -29,6 +34,9 @@ class Spell(AbilityMixin):
     def cast_range(self):
         return self._cast_range
     
+    def __str__(self):
+        s=self.name+' '+str(self.damage)+str(self.mana_cost)+str(self.cast_range)
+        return s
 
 @property
 def cast_range(self):
