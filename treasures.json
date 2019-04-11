@@ -1,1 +1,1 @@
-[{"type": "Weapon", "name": "rifle", "damage": "60"},{"type": "Spell", "name": "invisibility", "damage": "30","mana_cost":"50","cast_range":"2"},{"type": "Health_Potion", "name": "water", "health": "10"},{"type": "Mana_Potion", "name": "magic_liquid", "mana": "20"}]
+[{"type": "Weapon", "name": "rifle", "damage": "60"},{"type": "Spell", "name": "invisibility", "damage": "30","mana_cost":"50","cast_range":"2"},{"type": "HealthPotion", "name": "water", "health": "10"},{"type": "ManaPotion", "name": "magic_liquid", "mana": "20"}]
