@@ -8,6 +8,7 @@ class Person:
         self._health = health
         self._mana = mana
         self._max_health = health
+        self._max_mana = mana
     def get_health(self):
         return self._health
 
@@ -21,7 +22,7 @@ class Person:
             return True
 
     def can_cast(self):
-        if self._mana < 0:
+        if self._mana <= 0:
             return False
         else:
             return True
@@ -38,22 +39,33 @@ class Person:
         else:
             if healing_points + self._health > self._max_health:
                 self._health = self._max_health
+                #print('Health is max')
                 return True
             else:
                 self._health = self._health + healing_points
                 return True
 
+    def take_mana(self, mana_points):
+        if self.is_alive() == False:
+            return False
+        else:
+            if mana_points + self._mana > self._max_mana:
+                    self._mana = self._max_mana
+                    #print('Mana is max')
+                    return True
+            else:
+                self._mana = self._mana + mana_points
+                return True
+
     def equip(self, weapon):
-        self.current_weapon=weapon
+        self.current_weapon = weapon
 
     def learn(self, spell):
-        self.current_spell=spell
+        self.current_spell = spell
 
-    def attack(self, by=None):
-        if self.current_spell==None or self.current_weapon==None:
-            return 0
-        else:
-            if(by=="weapon"):
-                return self.current_weapon.damage
-            if(by=="spell"):
-                return self.current_spell.damage
+    def damage_of_weapon(self):
+        return self.current_weapon.damage
+    def damage_of_spell(self):
+        return self.current_spell.damage
+
+    
