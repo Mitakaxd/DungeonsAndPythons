@@ -1,22 +1,39 @@
 from Person import Person
-from abilities import * 
+from abilities import *
+from random import randint
+
 class Enemy(Person):
-    def __init__(self,health,mana,damage):
-        super().__init__(health,mana)
-        self._damage=damage
+
+    def __init__(self, health, mana, damage):
+        super().__init__(health, mana)
+        self._damage = damage
 
     def attack(self, by=None):
+
+        log_str = "{} attacked by {} for {} damage"
+        if self.current_spell == None and self.current_weapon == None:
+            return (self._damage, log_str.format(   
+                "Enemy", "hand-to-hand combat", self._damage))
+
         if by == None:
-            return self._damage
-        # elif by != None and self.current_spell==None or self.current_weapon==None:
-        #     msg ="You should have both a weapon and a spell in order to use one of them. Use the enemy's damage instead.  "
-        #     return msg
-        elif by=="weapon" and self.current_weapon != None:
-            return self.damage_of_weapon()
-        elif by=="spell" and self.current_spell != None:
-            if self.current_spell.mana_cost<=self._mana:
-                spell_damage= self.damage_of_spell()
-                self._mana=self._mana-self.current_spell.mana_cost
-                return spell_damage
+            if self.can_cast() and self.damage_of_spell() >= self.damage_of_weapon():
+                return self.attack(by='spell')
+            elif self.current_weapon != None:
+                return self.attack(by='weapon')
             else:
-                raise CustomError("The enemy cannot cast the spell because the mana is not enough. Use the enemy's damage instead. ")
+                return (self._damage, log_str.format(
+                    "Enemy", "hand-to-hand combat", self._damage))
+
+        if by == "weapon":
+            return (self.current_weapon.damage + self._damage, log_str.format(
+                "Enemy", self.current_weapon.name, current_weapon.damage + self._damage))
+        if by == "spell":
+            return (self.current_spell.damage + self._damage, log_str.format(
+                "Enemy", self.current_spell.name, current_spell.damage + self._damage))
+
+    @classmethod
+    def generate_enemy(cls, difficulty):
+        health = randint(difficulty*20,difficulty*30)
+        mana = randint(difficulty*20, difficulty*30)
+        damage = randint(difficulty*20, difficulty*30)
+        return cls(health,mana,damage)
