@@ -39,8 +39,7 @@ class Spell(AbilityMixin):
         return self._cast_range
 
     def __str__(self):
-        s = self.name + ' ' + str(self.damage) + \
-            str(self.mana_cost) + str(self.cast_range)
+        s = self.name + ' ' + str(self.damage) + ' ' +str(self.mana_cost) +' '+ str(self.cast_range)
         return s
 
     @property
