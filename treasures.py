@@ -2,12 +2,6 @@ from potions import *
 from abilities import *
 import json
 import random
-def read_json():
-    with open('treasures.json', 'r') as f:
-        data = json.load(f)
-    # print(data)
-    return data
-
 
 def pick_treasure():
     with open('treasures.json', 'r') as f:

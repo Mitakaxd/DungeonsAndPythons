@@ -26,10 +26,14 @@ class Enemy(Person):
 
         if by == "weapon":
             return (self.current_weapon.damage + self._damage, log_str.format(
-                "Enemy", self.current_weapon.name, current_weapon.damage + self._damage))
+                "Enemy", self.current_weapon.name, self.current_weapon.damage + self._damage))
         if by == "spell":
-            return (self.current_spell.damage + self._damage, log_str.format(
-                "Enemy", self.current_spell.name, current_spell.damage + self._damage))
+            if self.current_spell.mana_cost<=self._mana:
+                    self._mana=self._mana-self.current_spell.mana_cost
+                    return (self.current_spell.damage + self._damage, log_str.format(
+                        "Enemy", self.current_spell.name, self.current_spell.damage + self._damage))
+            else:
+                raise CustomError("The enemy cannot cast the spell because the mana is not enough")
 
     @classmethod
     def generate_enemy(cls, difficulty):
