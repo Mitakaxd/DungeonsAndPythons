@@ -1,5 +1,7 @@
 from potions import *
 from abilities import *
+import json
+import random
 def read_json():
     with open('treasures.json', 'r') as f:
         data = json.load(f)
@@ -19,22 +21,22 @@ def pick_treasure():
     if el['type'] == 'Weapon':
         name_weapon = el['name']
         damage_weapon = el['damage']
-        w = Weapon(name_weapon, damage_weapon)
+        w = Weapon(name_weapon, int(damage_weapon))
         return w
     if el['type'] == 'Spell':
         name_spell = el['name']
         damage_spell = el['damage']
         mana_cost = el['mana_cost']
         cast_range = el["cast_range"]
-        s = Spell(name_spell, damage_spell, mana_cost, cast_range)
+        s = Spell(name_spell, int(damage_spell), int(mana_cost), int(cast_range))
         return s
     if el['type'] == 'HealthPotion':
         name = el['name']
         health = el['health']
-        hp = HealthPotion(name, health)
+        hp = HealthPotion(name, int(health))
         return hp
     if el['type'] == 'ManaPotion':
         name = el['name']
         mana = el['mana']
-        mp = ManaPotion(name, mana)
+        mp = ManaPotion(name, int(mana))
         return mp

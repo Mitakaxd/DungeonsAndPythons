@@ -16,6 +16,7 @@ class Fight:
                 self._log.append(enemy_message)
         if hero.is_alive():
             self._won = True
+            self._log.append("Enemy killed")
         else:
             self._won = False
 

@@ -31,14 +31,14 @@ class Hero(Person):
         if by == None:
             if self.can_cast() and self.damage_of_spell() >= self.damage_of_weapon():
                 return self.attack(by='spell')
-            elif self.current_weapon != None:
+            elif isinstance(self.current_weapon, Weapon):
                 return self.attack(by='weapon')
             else:
                 return (0, "{} has no mana, and has no weapons".format(self.name))
 
         if by == "weapon":
             return (self.current_weapon.damage, log_str.format(
-                self.name, self.current_weapon.name, current_weapon.damage))
+                self.name, self.current_weapon.name, self.current_weapon.damage))
         if by == "spell":
             return (self.current_spell.damage, log_str.format(
-                self.name, self.current_spell.name, current_spell.damage))
+                self.name, self.current_spell.name, self.current_spell.damage))

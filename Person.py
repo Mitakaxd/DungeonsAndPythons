@@ -14,7 +14,8 @@ class Person:
     def get_health(self):
         return self._health
 
-    def get_mana(self):
+    @property
+    def mana(self):
         return self._mana
 
     def is_alive(self):

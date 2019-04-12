@@ -8,7 +8,7 @@ class HealthPotion:
     def name(self):
         return self._name
 
-    def consume(hero):
+    def consume(self, hero):
         hero.take_healing(self._health)
 
     @property
@@ -34,7 +34,7 @@ class ManaPotion:
     def mana(self):
         return self._mana
 
-    def consume(hero):
+    def consume(self, hero):
         hero.take_mana(self._mana)
 
     def __str__(self):

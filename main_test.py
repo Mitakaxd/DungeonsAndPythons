@@ -3,7 +3,7 @@ from hero import *
 from enemy import *
 def main():
     map = Dungeon('./level1.txt')
-    brom = Hero('Brom','Gunslinger', 200,20,20)
+    brom = Hero('Brom','Gunslinger', 200,200,200)
     map.print_map()
     print()
     map.get_starting_point()

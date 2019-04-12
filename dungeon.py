@@ -3,6 +3,7 @@ from enemy import Enemy
 from hero import Hero
 from treasures import pick_treasure
 from potions import *
+from abilities import *
 class Dungeon:
     directions = {'Up': (-1, 0), 'Down': (1, 0),
                   'Left': (0, -1), 'Right': (0, 1)}
@@ -51,10 +52,13 @@ class Dungeon:
             return False
         new_position_touch = self._map[new_position[0]][new_position[1]]
         if new_position_touch == 'T':
+            self._map[self._hero_position[0]][self._hero_position[1]] = '.'
+            self._map[new_position[0]][new_position[1]] = 'H'
+            self._hero_position = new_position
             treasure =  pick_treasure()
-            if treasure is HealthPotion or ManaPotion:
+            if isinstance (treasure, HealthPotion)  or  isinstance(treasure, ManaPotion):
                 treasure.consume(self._hero)
-            elif treasure is Spell:
+            elif isinstance(treasure, Spell):
                 self._hero.learn(treasure)
             else:
                 self._hero.equip(treasure)
