@@ -6,12 +6,9 @@ import random
 def pick_treasure():
     with open('treasures.json', 'r') as f:
         data = json.load(f)
-    print(data)
     len_data = len(data) - 1
     n = random.randint(0, len_data)
-    print(n)
     el = data[n]
-    print(el)
     if el['type'] == 'Weapon':
         name_weapon = el['name']
         damage_weapon = el['damage']
