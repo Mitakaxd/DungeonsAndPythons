@@ -6,7 +6,7 @@ from tkinter import messagebox
 
 
 class Level(tk.Frame):
-    images = {'E': './pictures/enemy.png', 'H': './pictures/enemy.png', '.': './pictures/path.png',
+    images = {'E': './pictures/enemy.png', 'H': './pictures/hero.png', '.': './pictures/path.png',
               '#': './pictures/walla.png', 'G': './pictures/princess.png', 'T': './pictures/treasure.png'}
 
     def setUI(self):
