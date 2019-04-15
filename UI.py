@@ -33,7 +33,11 @@ class Level(tk.Frame):
     def start_game(self, master, chosen_level, hero):
         self.hero = hero
         self.log = []
-        self.map = Dungeon('./levels/level' + str(chosen_level) + '.txt')
+        try:
+            self.map = Dungeon('./levels/level' + str(chosen_level) + '.txt')
+        except Exception:
+            tk.messagebox.showinfo("You Won", "You Won")
+            return
         self.map.spawn(deepcopy(self.hero))
         self.layout = self.map.print_map()
         self.chosen_level = chosen_level

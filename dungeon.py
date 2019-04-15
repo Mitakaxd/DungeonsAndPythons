@@ -75,7 +75,7 @@ class Dungeon:
             treasure = pick_treasure()
             if isinstance(treasure, HealthPotion) or isinstance(treasure, ManaPotion):
                 current_log.append(
-                    "{} stumbled upon a treasure and got a Potion".format(self._hero.name))
+                    "{} stumbled upon a treasure and got a {}".format(self._hero.name,treasure.__class__.__name__))
                 treasure.consume(self._hero)
             elif isinstance(treasure, Spell):
                 self._hero.learn(treasure)
