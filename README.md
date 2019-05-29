@@ -16,16 +16,6 @@ We are going to have hero, enemies, weapons, treasures and magic!
 * When a hero reaches 0 `health` he is considered dead.
 * When a hero reaches 0 `mana`, he cannot cast any spells
 
-### `take_damage(damage_points)`
-
-So, our hero can take damage which reduces his health.
-
-This method should reduce the hero's health by `damage`
-
-__If we inflict more damage than we have health, health will always be equal to zero and we cannot get below that!__
-
-### `take_healing(healing_points)`
-
 Our hero can also be healed!
 
 * We cannot heal our hero above the maximum health, which is given by `health`
