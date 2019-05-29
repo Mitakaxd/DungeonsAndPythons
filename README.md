@@ -1,11 +1,15 @@
 # DungeonsAndPythons
 
-# Dungeons and Pythons
+# Dungeons and Pythons: Get the Princess mode
 
 We are going to make a simple, 2D turn-based console game filled with dungeons and pythons!
 
 We are going to have hero, enemies, weapons, treasures and magic!
-
+## Basics: 
+1. Run UI.py to start game
+2. Win Conditions:
+  Get to the princess without dying! You have only 3 lives!
+  Getting to the princess in the final level == Victory!
 
 ## Our Hero
 
@@ -46,21 +50,6 @@ Our hero can equip one weapon and one spell in order to have damage.
 In order for our hero to have proper damage, he must be equiped with either a weapon or a spell.
 
 One hero can carry at max 1 weapon and 1 spell.
-
-### Weapon class
-
-### Spell class
-
-This should be more complex. Implement a spell class, which behaves like this:
-
-```python
-s = Spell(name="Fireball", damage=30, mana_cost=50, cast_range=2)
-```
-
-`name` and `damage` are self explanatory.
-
-* `mana_cost` means that the spell needs at least that much amount of mana in order to be cast. Raise an error if you cannot cast that spell.
-* `cast_range` is a bit more special and related to the Dungeon. You can cast that spell on an enemy, which is within the `cast_range`. If `cast_range` is 1, you can attack enemies, that are next to you. If cast range is greater than 1, you can attack enemies from distance, that is `cast_range` squares away. **Casting range is only calculated in a straight line. You cannot curve spells**
 
 ## The Dungeons and treasures
 
@@ -107,5 +96,3 @@ The fight follows this algorithm:
 * We always use the attack that deals more damage
 * If our weapon and our spell deals the same amount of damage, use the spell first.
 * When you run out of mana, use the weapon (if any)
-
-## Creativity and Improvisation
